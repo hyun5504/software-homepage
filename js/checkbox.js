@@ -53,7 +53,7 @@ document.getElementById('recommend-btn').addEventListener('click', function() {
 
     let subjectsResultHTML = "";
     if (softwareSubjects.length > 0) {
-        subjectsResultHTML += `<div><strong>💻 컴퓨터소프트웨어학과전공 추천과목:</strong><br>${softwareSubjects.join(', ')}</div>`;
+        subjectsResultHTML += `<div><strong>💻 컴퓨터소프트웨어전공 추천과목:</strong><br>${softwareSubjects.join(', ')}</div>`;
     }
     if (aiBigDataSubjects.length > 0) {
         if (softwareSubjects.length > 0) subjectsResultHTML += "<div style='margin-top:12px;'></div>"; 
@@ -91,7 +91,7 @@ document.getElementById('reveal-major-btn').addEventListener('click', function()
     const banner = document.getElementById('major-banner');
     
     if (softwareCount > aiBigDataCount) {
-        finalMajorText = "최종 추천: <span class='highlight-major' style='color:#3182f6;'>컴퓨터소프트웨어학과전공</span>";
+        finalMajorText = "최종 추천: <span class='highlight-major' style='color:#3182f6;'>컴퓨터소프트웨어전공</span>";
         imageUrl = "assets/images/comsoft_theme.png";
         banner.style.background = "#3182f6"; 
     } else if (aiBigDataCount > softwareCount) {
