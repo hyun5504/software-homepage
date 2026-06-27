@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Q&A - 소프트웨어학과</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/qna.css" />
+</head>
+<body>
+
+  <a href="index.html" class="floating-left-home-btn">🏠<br>HOME</a>
+
+  <div id="tamagochi-fixed-container">
+    <img id="tamagochi-image" src="assets/tamagochi/egg.png" alt="성장 다마고치">
+  </div>
+
+  <div class="bg-overlay"></div>
+
+  <div class="page-header">
+    <h1>💬 자주 묻는 질문</h1>
+    <p>궁금한 질문을 클릭하면 아바타가 답변해드려요!</p>
+  </div>
+
+  <div class="qna-container">
+    <div class="avatar-section">
+      <div class="avatar-video-wrapper">
+        <video id="avatarVideo" src="assets/video/qna_movie.mp4" preload="auto" muted playsinline></video>
+      </div>
+
+      <div class="speaking-indicator" id="speakingIndicator">
+        <div class="speaking-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="indicator-text">아바타가 답변하고 있어요</span>
+      </div>
+
+      <div class="answer-box empty" id="answerBox">
+        질문을 선택하면 답변이 여기에 표시됩니다.
+      </div>
+    </div>
+
+    <div class="questions-section">
+      <div class="questions-title">무엇이 궁금하신가요? <span>👇</span></div>
+
+      <button class="question-btn qna-item" onclick="playAnswer(0)">
+        <div class="q-label">Q1</div>
+        <div class="q-text">소프트웨어학과가 AI로 대체 가능한거 아닌가요?</div>
+      </button>
+
+      <button class="question-btn qna-item" onclick="playAnswer(1)">
+        <div class="q-label">Q2</div>
+        <div class="q-text">소프트웨어학과 취업률은 어떻게 되나요?</div>
+      </button>
+
+      <button class="question-btn qna-item" onclick="playAnswer(2)">
+        <div class="q-label">Q3</div>
+        <div class="q-text">소프트웨어학과에서는 어떤 노트북을 쓰면 좋을까요?</div>
+      </button>
+
+      <button class="question-btn qna-item" onclick="playAnswer(3)">
+        <div class="q-label">Q4</div>
+        <div class="q-text">컴퓨터소프트웨어학과전공과 AI/빅데이터전공의 차이는 무엇인가요?</div>
+      </button>
+
+      <button class="question-btn qna-item" onclick="playAnswer(4)">
+        <div class="q-label">Q5</div>
+        <div class="q-text">코딩에 대해 아무것도 모르는데 괜찮을까요?</div>
+      </button>
+    </div>
+  </div>
+
+  <script src="js/tamagochi.js"></script>
+
+  <script>
+    const answers = [
+      {
+        text: "이런 걱정을 하는 친구들이 요즘 정말 많아.\n단순히 시키는 대로 코드만 받아 적는 것은 AI가 대체할 수 있지만 우리 학과에서 배우는 것은 단순 타이핑이 아니야.\n어떤 문제를 해결할지 정의하고, 필요한 기술을 선택하고, 결과물이 올바르게 작동하도록 설계하는 역할은 오직 사람만이 할 수 있는 영역이거든.\n우리 과가 바로 그 '고급 설계자'를 키우는 곳이야. AI에 대체될까 봐 무서워하기보다, 그 AI의 뇌(딥러닝 모델)를 직접 설계하여 세상에 배포하는 엔지니어가 되는 커리큘럼이 쫙 깔려있어. 우리가 AI를 만드는 주인인데 누가 누굴 대체해? 걱정 마!",
+        audio: "assets/audio/질문1.mp3"
+      },
+      {
+        text: "일단 취업률은 걱정 안 해도 될 수준이야.\n학과 자체적으로도 매년 상당히 높은 수치를 기록하고 있고 3년 연속 취업 우수 학과야.\n학과 자체 취업률이 80% 안팎을 뚫었던 적이 있거든? 대단한 수치지.\n실제로 학교 선배들은 네이버, 카카오 같은 빅테크나 요즘 잘 나가는 유니콘 스타트업 백엔드/프론트엔드 개발자로 다수 진출하고 있어.",
+        audio: "assets/audio/질문2.mp3"
+      },
+      {
+        text: "무슨 노트북을 살지도 고민이지. 상황에 따라서 추천하는 노트북이 달라!\n난 무조건 가벼운 게 최고고, 카페나 도서관 자주 다닐 거라면 LG 그램을 추천할게.\n만약 고급스러운 메탈 디자인이 좋고, 갤럭시 스마트폰이랑 연동할 거라고 하면 삼성 갤럭시 북을 추천할게!",
+        audio: "assets/audio/질문3.mp3"
+      },
+      {
+        text: "컴퓨터소프트웨어학과전공은 웹사이트, 앱, 서버 같은 소프트웨어 시스템 자체를 처음부터 끝까지 안정적이고 효율적으로 개발하는 방법을 배우는 전공이야.\n프론트엔드부터 백엔드, 시스템 및 네트워크 프로그래밍까지 골고루 배울 수 있어.\nAI/빅데이터전공은 컴퓨터 소프트웨어 기술을 베이스로 깔고 가되, AI로 세상의 문제를 해결하는 방법을 배우는 전공이야.\n머신러닝, 딥러닝, 자연어처리, 컴퓨터 비전 같은 AI 모델을 직접 설계하고 구현해볼 수 있어.\n데이터를 분석해서 AI 모델을 만들고 싶다면 AI/빅데이터전공을 추천할게.",
+        audio: "assets/audio/질문4.mp3"
+      },
+      {
+        text: "완전 괜찮아! 장담하는데 우리 과 신입생들 중에 입학할 때 프로그래밍 처음 접하는 애들이 태반이야.\n우리 과는 '코딩을 잘해서 오는 과'가 아니라 '코딩을 잘하려고 오는 과'야.\n처음부터 어려운 거 안 시키고 기초부터 아주 차근차근 걸음마 떼게 도와주셔.\n게다가 우리 과는 훌륭한 교수님들 및 선후배 1:N 멘토링 시스템 등이 진짜 잘 되어 있거든? 이거야 파고드는 호기심, 그리고 딱 배우려는 마음가짐, 그 두 개만 들고 오면 돼.",
+        audio: "assets/audio/질문5.mp3"
+      }
+    ];
+
+    const video = document.getElementById('avatarVideo');
+    const answerBox = document.getElementById('answerBox');
+    const speakingIndicator = document.getElementById('speakingIndicator');
+    const buttons = document.querySelectorAll('.question-btn');
+
+    let currentAudio = null;
+    let activeIndex = -1;
+
+    // 마우스 호버 시 3D 입체 효과
+    buttons.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const xPct = x / rect.width - 0.5;
+        const yPct = y / rect.height - 0.5;
+        btn.style.transform = `perspective(1000px) rotateX(${yPct * -8}deg) rotateY(${xPct * 8}deg) scale(1.02)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+
+    function playAnswer(index) {
+      if (activeIndex === index) {
+        stopAll();
+        return;
+      }
+
+      stopAll();
+      activeIndex = index;
+
+      buttons.forEach(btn => btn.classList.remove('checked-active', 'active'));
+      buttons[index].classList.add('checked-active', 'active');
+
+      const qnaContainer = document.querySelector('.qna-container');
+      if (qnaContainer) {
+        const targetOffset = qnaContainer.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: targetOffset, behavior: 'smooth' });
+      }
+
+      answerBox.classList.remove('empty');
+      answerBox.classList.remove('slide-up-active');
+      void answerBox.offsetWidth;
+      answerBox.classList.add('slide-up-active');
+      answerBox.textContent = answers[index].text;
+
+      speakingIndicator.classList.add('active');
+
+      video.muted = true;
+      video.currentTime = 0;
+      video.play().catch(() => {
+        video.muted = true;
+        video.play();
+      });
+
+      currentAudio = new Audio(answers[index].audio);
+      currentAudio.play().catch(err => console.warn("오디오 에러:", err));
+      currentAudio.addEventListener('ended', stopAll);
+      video.addEventListener('ended', onVideoEnded);
+    }
+
+    function onVideoEnded() {
+      if (currentAudio && !currentAudio.paused) {
+        video.currentTime = 0;
+        video.play();
+      }
+    }
+
+    function stopAll() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+      video.pause();
+      video.currentTime = 0;
+      video.muted = true;
+      video.removeEventListener('ended', onVideoEnded);
+      speakingIndicator.classList.remove('active');
+      buttons.forEach(btn => btn.classList.remove('checked-active', 'active'));
+      activeIndex = -1;
+    }
+  </script>
+
+</body>
+</html>

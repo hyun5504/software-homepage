@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>저희 학과를 소개 및 홍보합니다.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=IBM+Plex+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <header>
+        <h1>💻소프트웨어 학과 소개⚙️</h1>
+        <p class="header-subtitle">소프트웨어 세상, 소프트웨어 중심 교육! 초연결 지능화 사회를 선도할 실무형 인재를 키웁니다.</p>
+    </header>
+
+    <button class="cyber-reset-btn-fixed" onclick="resetTamagotchi()">
+        🔄<br>RESET
+    </button>
+
+    <div class="music-btn-container">
+        <button id="music-btn" class="cyber-music-btn-fixed" onclick="toggleMusic()">
+            🎵<br><span id="music-btn-text">PLAY</span>
+        </button>
+        <div class="audio-bubble show">로고송을 재생해보세요!</div>
+    </div>
+
+    <div id="tamagochi-fixed-container">     
+        <img id="tamagochi-image" src="assets/tamagochi/egg.png" alt="초기 다마고치 알">
+    </div>
+
+    <nav class="button-navigation">
+        <div class="button-grid">
+            <a href="subject.html" class="cyber-btn btn-blue">
+                📚 수강과목 추천 받으러 가기
+            </a>
+            <a href="qna.html" class="cyber-btn btn-pink">
+                ❓ 자주 하는 질문 Q&A 보러가기
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // BGM 재생 및 일시정지 제어 함수 (말풍선 제어 로직 추가)
+        function toggleMusic() {
+            const bgm = document.getElementById('bgm');
+            const musicBtn = document.getElementById('music-btn');
+            const btnText = document.getElementById('music-btn-text');
+            const bubble = document.querySelector('.audio-bubble');
+
+            if (bgm.paused) {
+                bgm.play();
+                musicBtn.innerHTML = '⏸️<br><span id="music-btn-text">PAUSE</span>';
+                if (bubble) bubble.classList.remove('show'); // 재생 중일 때 말풍선 숨김
+            } else {
+                bgm.pause();
+                musicBtn.innerHTML = '🎵<br><span id="music-btn-text">PLAY</span>';
+                if (bubble) bubble.classList.add('show');    // 정지 중일 때 말풍선 다시 표시
+            }
+        }
+    </script>
+
+    <section class="video-card-section">
+        <div class="image-card-box">
+            <div class="video-wrapper">
+                <video src="assets/video/introduce.mp4" controls autoplay muted loop playsinline></video>
+            </div>
+        </div>
+    </section>
+
+    <section class="introduction-list">
+        <div class="introduction-item checked-active">
+            <div class="bullet-glow"></div>
+            <label>소프트웨어 중심 교육을 바탕으로 프로그래밍, 소프트웨어공학, 데이터베이스, 임베디드 시스템 등 핵심 전공을 체계적으로 학습하는 학과</label>
+        </div>
+        <div class="introduction-item checked-active">
+            <div class="bullet-glow"></div>
+            <label>인공지능, 컴퓨터 비전, 웹/앱 서비스 등의 캡스톤 설계 프로젝트를 수행</label>
+        </div>
+        <div class="introduction-item checked-active">
+            <div class="bullet-glow"></div>
+            <label>'대학기업협력형 SW 아카데미' 운영을 통해 기업 맞춤형 인재를 양성하고, 졸업과 취업이 다이렉트로 연결</label>
+        </div>
+        <div class="introduction-item checked-active">
+            <div class="bullet-glow"></div>
+            <label>4차 산업혁명 핵심 역량을 강화하기 위한 실습 중심의 최첨단 교육 인프라 및 오픈소스 기반의 협업 개발 환경 제공</label>
+        </div>
+        <div class="introduction-item checked-active">
+            <div class="bullet-glow"></div>
+            <label>공모전, 학술제, 소모임 및 멘토링 프로그램을 통해 전공 역량뿐만 아니라 실무 협업 능력과 문제 해결 능력을 겸비한 리더 양성</label>
+        </div>
+        <div class="introduction-item checked-active">
+            <div class="bullet-glow"></div>
+            <label>졸업 후 시스템 소프트웨어 개발사, 게임/모바일 앱 개발사, 웹 기획 및 정보시스템 운영사, 무인 자동차 및 IT 융합 기업, 보안 컨설팅 업체 등으로 진출</label>
+        </div>
+
+        <div class="software-graphic">
+            <div class="network">
+                <span>&lt;/&gt;</span>
+                <div class="pulse-ring"></div>
+            </div>
+            <div class="source source-top">🧠 ALGORITHM</div>
+            <div class="source source-right">💾 DATABASE</div>
+            <div class="source source-bottom">📦 DATA STRUCTURE</div>
+            <div class="source source-left">🌐 NETWORK</div>
+        </div>
+    </section>
+
+    <audio id="bgm" loop>
+        <source src="assets/audio/logosong.mp3" type="audio/mpeg">
+    </audio>
+
+    <footer></footer>
+
+    <script src="js/tamagochi.js"></script> 
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수강과목 추천 시뮬레이터</title>
+    
+    <link rel="stylesheet" href="css/subject.css"> 
+</head>
+<body>
+
+    <a href="index.html" class="floating-left-home-btn">🏠<br>HOME</a>
+
+    <div id="tamagochi-fixed-container">
+        <img id="tamagochi-image" src="assets/tamagochi/egg.png" alt="성장 다마고치">
+    </div>
+
+    <div id="recommendation-container">
+        <div class="title-area">
+            <h1>🎓 수강신청 과목 시뮬레이터</h1>
+            <p> 자신의 평소 관심사를 기반으로 수강신청 과목을 추천해줍니다.</p>
+        </div>
+
+        <form id="simulator-form">
+            <div class="question-list">
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q1" name="interest" value="자바프로그래밍" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q1">안드로이드 앱과 같은 시스템 개발의 기초가 되는 언어를 배워보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q2" name="interest" value="프론트엔드컴퓨팅" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q2">평소에 나만의 웹사이트 화면을 디자인하고 싶다는 생각을 해본 적이 있다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q3" name="interest" value="시스템프로그래밍" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q3">운영체제나 하드웨어를 직접 제어하는 코딩을 배워보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q4" name="interest" value="네트워크프로그래밍" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q4">서버와 클라이언트 간에 데이터를 주고 받는 실시간 채팅방을 만들어 보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q5" name="interest" value="게임그래픽스" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q5">게임 속 화려한 배경과 캐릭터 등을 직접 만들어보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q6" name="interest" value="스프링프레임워크" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q6">국내 백엔드 개발자 취업의 필수인 대규모 웹 서비스 구축에 대해 제대로 배워보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q7" name="interest" value="영상처리프로그래밍" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q7">포토샵 필터 기능이나 블랙박스 번호판 인식처럼 이미지와 영상을 분석하는 코딩이 궁금하다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q8" name="interest" value="컴퓨터소프트웨어특론" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q8">최신 소프트웨어 트렌드와 현업에서 쓰이는 고급 기술을 깊이 있게 공부해보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q9" name="interest" value="프로그래밍언어분석" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q9">다양한 프로그래밍 언어들이 내부적으로 어떻게 동작하고 설계되었는지 파악해보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q10" name="interest" value="데이터사이언스" data-track="ai" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q10">수많은 데이터 속에서 인사이트와 통계적 규칙을 찾아내보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q11" name="interest" value="딥러닝" data-track="ai" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q11">인공신공망 구조를 이해하고, 스스로 학습하는 AI모델을 직접 설계해보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q12" name="interest" value="빅데이터분석및시각화" data-track="ai" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q12">복잡한 빅데이터들을 한눈에 알아볼 수 있도록 그래프와 차트로 시각화해보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q13" name="interest" value="인공지능응용" data-track="ai" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q13">기존 서비스에 AI를 접목해 넷플릭스 같은 추천시스템을 만들어 보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q14" name="interest" value="텍스트마이닝" data-track="ai" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q14">많은 SNS를 분석해 사람들의 감정을 자동으로 추출해보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q15" name="interest" value="자연어처리" data-track="ai" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q15">챗봇처럼 인간의 일상 언어를 알아듣고 소통하게 만드는 기술에 흥미가 있다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q16" name="interest" value="클라우드컴퓨팅" data-track="se" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q16">가상화 기술을 활용해 언제 어디서나 접속 가능한 거대한 인프라 서비스를 관리해보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q17" name="interest" value="딥러닝컴퓨터비전" data-track="ai" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q17">자율주행차가 보행자를 알아보고, AI가 CCTV 속 사물을 스스로 인식하는 기술을 배워보고 싶다.</label>
+                </div>
+                <div class="question-item" onclick="toggleCard(this)">
+                    <input type="checkbox" id="q18" name="interest" value="AI빅데이터특론" data-track="ai" onclick="event.stopPropagation(); checkCard(this);">
+                    <label for="q18">최첨단 융합 기술과 고난도 알고리즘에 대해 알아보고 싶다.</label>
+                </div>
+            </div>
+
+            <div class="btn-wrap">
+                <button type="button" id="recommend-btn">✨ 내 맞춤 수강과목 추천 받기</button>
+            </div>
+        </form>
+
+        <div id="result-container">
+            <h2 class="result-title">🎯 나를 위한 맞춤 과목 추천</h2>
+            <div id="recommended-subjects"></div>
+    
+            <div id="reveal-btn-wrap" style="margin: 20px 0 10px 0;">
+                <button type="button" id="reveal-major-btn">
+                    🔍 최종 추천 전공 열기
+                </button>
+            </div>
+
+            <div id="final-major-area">
+                <div class="premium-report-card">
+                    <div id="major-banner" class="card-top-banner"></div>
+                    <div class="card-body">
+                        <div class="badge-icon">🏆</div>
+                        <div class="report-subtitle">FINAL RECOMMENDATION</div>
+                        <div id="recommended-major"></div>
+                        <div class="image-card-box">
+                            <img id="major-image" src="" alt="추천 전공 AI 트랙 이미지">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/tamagochi.js"></script> 
+    <script src="js/checkbox.js"></script> 
+</body>
+</html>

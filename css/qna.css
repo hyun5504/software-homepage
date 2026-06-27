@@ -1,0 +1,391 @@
+/* ===================================================
+   🌌 HYPER-LUXURY CYBER NEON DEVELOPMENT THEME (Q&A Version)
+   =================================================== */
+
+/* 1. 배경: 단순 그라데이션을 넘어선 사이버 딥 스페이스 무드 */
+body {
+    background-color: #060814;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 45%);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 60px 20px;
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    color: #f1f5f9;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* 타이틀 영역: 테크니컬 네온 그라디언트 */
+.page-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.page-header h1 {
+    font-family: 'Orbitron', 'Noto Sans KR', sans-serif;
+    font-size: 2.7rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ff007a 0%, #a855f7 50%, #00f0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+    filter: drop-shadow(0 2px 15px rgba(168, 85, 247, 0.5));
+}
+
+.page-header p {
+    font-size: 1.15rem;
+    color: #94a3b8; 
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(148, 163, 184, 0.1);
+}
+
+/* 2. 메인 판넬: 완벽한 SF 홀로그램 쉴드 디스플레이 */
+.qna-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1100px; 
+    margin: 0 auto;
+    padding: 50px 45px;
+    background: rgba(10, 15, 30, 0.7);
+    backdrop-filter: blur(25px); 
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 28px; 
+    border: 1px solid rgba(99, 102, 241, 0.3); 
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 
+                0 0 40px rgba(99, 102, 241, 0.15),
+                inset 0 0 30px rgba(99, 102, 241, 0.05); 
+    align-items: flex-start;
+}
+
+/* 3. 왼쪽 아바타 및 답변 섹션 */
+.avatar-section {
+    flex: 1.1;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.avatar-video-wrapper {
+    background: rgba(4, 6, 15, 0.8);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 10px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.avatar-video-wrapper video {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+    background: #000;
+}
+
+/* 홀로그램 답변 상태 표시기 */
+.speaking-indicator {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    border-radius: 16px;
+    color: #00f0ff;
+    font-family: 'Orbitron', 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+.speaking-indicator.active {
+    display: flex;
+}
+
+.speaking-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.speaking-dots span {
+    width: 6px;
+    height: 6px;
+    background-color: #00f0ff;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.speaking-dots span:nth-child(1) { animation-delay: -0.32s; }
+.speaking-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+/* 차원문 페이드인 이펙트 애니메이션 */
+@keyframes portalIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.97) translateY(25px);
+        filter: brightness(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+    }
+}
+
+/* 프리미엄 결과 박스 스타일 */
+.answer-box {
+    background: rgba(8, 12, 24, 0.9);
+    border-radius: 24px;
+    padding: 30px;
+    border: 1px solid #00f0ff;
+    box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    line-height: 1.8;
+    white-space: pre-line;
+    border-left: 6px solid #00f0ff; 
+}
+
+.answer-box.empty {
+    border-color: rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    color: #64748b;
+    text-align: center;
+    font-style: italic;
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.slide-up-active {
+    animation: portalIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 4. 오른쪽 질문 리스트 섹션 */
+.questions-section {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.questions-title {
+    font-family: 'Orbitron', 'Noto Sans KR', sans-serif;
+    color: #00f0ff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+/* 인텔리전트 네온 바 스타일 버튼 */
+.question-btn {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid rgba(168, 85, 247, 0.3);
+    border-radius: 16px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: left;
+    width: 100%;
+    color: #cbd5e1;
+}
+
+/* 마우스 호버 시: 전격 액션 하이라이트 */
+.question-btn:hover {
+    border-color: rgba(0, 240, 255, 0.5);
+    border-left-color: #00f0ff;
+    transform: translateY(-3px) scale(1.005);
+    background: rgba(20, 30, 55, 0.8);
+    box-shadow: 0 10px 25px rgba(0, 240, 255, 0.15);
+}
+
+/* 선택이 완료된 카드는 우아한 바이올렛 아우라 고정 */
+.question-btn.checked-active {
+    border-color: rgba(168, 85, 247, 0.6);
+    border-left-color: #a855f7;
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.12) 0%, rgba(15, 23, 42, 0.6) 100%);
+    box-shadow: inset 0 0 15px rgba(168, 85, 247, 0.1);
+}
+
+.q-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #a855f7;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.question-btn.checked-active .q-label {
+    color: #ffffff;
+    text-shadow: 0 0 15px #a855f7;
+}
+
+.q-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    transition: color 0.2s;
+}
+
+.question-btn.checked-active .q-text {
+    color: #e9d5ff;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+/* 반응형 레이아웃 */
+@media (max-width: 868px) {
+    .qna-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 30px 20px;
+    }
+    
+    .avatar-section {
+        min-width: 100%;
+    }
+}
+
+/* ===================================================
+   🤖 `subject.css`와 완벽 동기화된 다마고치 고정 패널
+   =================================================== */
+#tamagochi-fixed-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+    width: 120px;  /* 🎯 subject.css와 완벽 동일 세팅 */
+    height: 120px; /* 🎯 subject.css와 완벽 동일 세팅 */
+    background: rgba(8, 12, 24, 0.8);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 28px;
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
+    border: 1.5px solid #a855f7; /* 네온 보라 아웃라인 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+#tamagochi-fixed-container:hover {
+    box-shadow: 0 0 35px #00f0ff;
+    border-color: #00f0ff;
+}
+
+#tamagochi-image {
+    width: 80%;
+    height: auto;
+    display: block;
+}
+
+/* 🌌 테마 맞춤형 왼쪽 고정 네온 홈 버튼 */
+.floating-left-home-btn {
+    position: fixed;       /* 화면에 고정 */
+    top: 24px;             /* 다마고치(top: 24px)와 높이 맞춤 */
+    left: 24px;            /* 화면 왼쪽에서 24px 띄움 */
+    z-index: 1001;         /* 최상단 레이어 보장 */
+    
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    
+    width: 100px;
+    height: 80px;
+    background: rgba(8, 12, 24, 0.8); /* 다마고치 패널과 동일한 딥블랙 투명도 */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    
+    color: #00f0ff;        /* 사이버 청록색 텍스트 */
+    text-decoration: none;
+    font-family: 'Orbitron', 'Noto Sans KR', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    text-align: center;
+    
+    border: 1.5px solid #00f0ff; /* 청록색 네온 아웃라인 */
+    border-radius: 28px;         /* 다마고치 패널과 대칭되는 둥근 사각형 */
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.3); /* 네온 광채 */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 마우스를 올렸을 때 에너지가 충전되는 듯한 핑크/보라 반전 효과 */
+.floating-left-home-btn:hover {
+    color: #ffffff;
+    border-color: #ff007a;       /* 핫핑크 네온으로 변경 */
+    box-shadow: 0 0 35px #ff007a; /* 핑크빛 아우라 방출 */
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* 💬 다마고치 레이아웃을 절대 해치지 않는 독립형 fixed 말풍선 */
+.cyber-bubble {
+    position: fixed;
+    
+    /* 📍 [좌표 조절 좌표계] 현재 다마고치 패널 위치에 맞춰 정밀하게 조절하세요 */
+    /* 만약 다마고치가 우측 상단(top: 24px, right: 24px)에 있다면 아래 설정을 사용합니다 */
+    top: 40px;          /* 다마고치 높이랑 맞춤 */
+    right: 160px;       /* 다마고치(우측 끝에서 24px + 가로크기 120px) 왼쪽 옆에 딱 붙도록 배치 */
+    
+    width: 210px;
+    padding: 12px 16px;
+    background: rgba(8, 12, 24, 0.95);
+    border: 1.5px solid #00f0ff; /* 청록색 사이버 네온 라인 */
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+    
+    color: #f8fafc;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+    pointer-events: none; /* 말풍선 때문에 뒤에 버튼이 안 눌리는 현상 방지 */
+    
+    /* 부드러운 등장 애니메이션용 기본 상태 */
+    opacity: 0;
+    transform: translateX(15px) scale(0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    z-index: 9999; /* 최상단으로 띄움 */
+}
+
+/* 📐 오른쪽 다마고치 패널을 가리키는 삼각형 꼬리표 */
+.cyber-bubble::after {
+    content: '';
+    position: absolute;
+    right: -7px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: #080c1c;
+    border-right: 1.5px solid #00f0ff;
+    border-top: 1.5px solid #00f0ff;
+}
+
+/* ✨ 2단계 달성 시 슈욱 나타나는 효과 */
+.cyber-bubble.show {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    animation: bubbleFloat 1.5s ease-in-out infinite alternate;
+}
+
+/* 🎈 다마고치 옆에서 둥실둥실 움직이는 효과 */
+@keyframes bubbleFloat {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-6px);
+    }
+}
